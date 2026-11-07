@@ -1,1 +1,1 @@
-# study-log
+# README
