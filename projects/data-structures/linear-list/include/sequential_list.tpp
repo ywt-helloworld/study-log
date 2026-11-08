@@ -1,4 +1,6 @@
 #include <stdexcept>
+#include <utility>
+#include <new>
 
 template <typename T>
 SeqList<T>::SeqList() : 
@@ -47,10 +49,10 @@ std::size_t SeqList<T>::length() const{
 
 template <typename T>
 bool SeqList<T>::reserve(std::size_t newSize) {
-    if(newSize < length) return false;
+    if(newSize < length_) return false;
     try {
         T* newData_ = new T[newSize];
-        std::copy_n(data_, length, newData_);
+        std::copy_n(data_, length_, newData_);
         delete[] data_;
         data_ = newData_;
         newData_ = nullptr;
@@ -88,18 +90,20 @@ bool SeqList<T>::insert(std::size_t i, T x) {
         return false;
     }
     else if(full()) {
+        bool allocation = true;
         if(capacity() == 0) {
-            reserve(4);
+            allocation = reserve(4);
         }
         else {
-            reserve(capacity_ * 2);
+            allocation = reserve(capacity_ * 2);
         }
+        if(allocation = false) return false;
     }
     for(std::size_t j = length_; j >= i; --j) {
         data_[j] = data_[j - 1];
     }
     data_[i - 1] = std::move(x);
-    ++length;
+    ++length_;
     return true;
 }
 

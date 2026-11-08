@@ -3,6 +3,7 @@
 #include <cstddef>  
 #include <optional>
 #include <iostream>
+#include <algorithm>
 
 #define MAX_SIZE 100
 // 实现一个顺序表（Sequential List）
