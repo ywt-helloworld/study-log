@@ -97,7 +97,7 @@ bool SeqList<T>::insert(std::size_t i, T x) {
         else {
             allocation = reserve(capacity_ * 2);
         }
-        if(allocation = false) return false;
+        if(allocation == false) return false;
     }
     for(std::size_t j = length_; j >= i; --j) {
         data_[j] = data_[j - 1];
