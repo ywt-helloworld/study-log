@@ -34,3 +34,5 @@ public:
     bool empty() const;
     bool full() const;
 };
+
+#include "sequential_list.tpp"
