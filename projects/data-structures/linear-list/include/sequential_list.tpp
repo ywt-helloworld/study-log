@@ -4,7 +4,7 @@
 
 template <typename T>
 SeqList<T>::SeqList() : 
-    data_(nullptr), capacity_(0), length_(0) {}
+    data_(nullptr), length_(0), capacity_(0) {}
 
 template <typename T>
 SeqList<T>::SeqList(std::size_t maxSize) :
